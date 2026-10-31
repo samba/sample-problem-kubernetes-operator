@@ -1,0 +1,22 @@
+apiVersion: workflow.example.com/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: sample-workflow
+spec:
+  steps:
+    - name: compile
+      image: golang:1.21
+      command: ["go", "build", "./..."]
+      timeoutSeconds: 600
+    - name: test
+      image: golang:1.21
+      command: ["go", "test", "./..."]
+      timeoutSeconds: 600
+    - name: package
+      image: busybox:latest
+      command: ["sh", "-c", "echo packaging $VERSION"]
+      timeoutSeconds: 120
+    - name: deploy
+      image: busybox:latest
+      command: ["sh", "-c", "echo deploying to $ENVIRONMENT"]
+      timeoutSeconds: 120

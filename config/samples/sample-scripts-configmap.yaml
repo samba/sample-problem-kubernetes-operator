@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: build-scripts
+data:
+  docker-build.sh: |
+    #!/bin/sh
+    echo "Building Docker image..."
+    echo "This would run docker build commands"
+    echo "Image built successfully!"
+
+  test.sh: |
+    #!/bin/sh
+    echo "Running tests..."
+    echo "All tests passed!"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: deploy-scripts
+data:
+  deploy.sh: |
+    #!/bin/sh
+    echo "Deploying to staging..."
+    echo "Deployment successful!"

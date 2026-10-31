@@ -1,0 +1,12 @@
+apiVersion: workflow.example.com/v1alpha1
+kind: WorkflowRun
+metadata:
+  name: sample-workflow-run
+spec:
+  workflowTemplateRef: sample-workflow
+  parameters:
+    GIT_REPO: "https://github.com/myorg/myapp"
+    GIT_BRANCH: "main"
+    GIT_COMMIT: "abc123def456"
+    ENVIRONMENT: "staging"
+    VERSION: "1.2.3"
